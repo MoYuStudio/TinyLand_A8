@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sakuya.mp3-c12d2998ff1ceac218e867734b7a6267.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Sakuya.mp3"
+dest_files=[ "res://.import/Sakuya.mp3-c12d2998ff1ceac218e867734b7a6267.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

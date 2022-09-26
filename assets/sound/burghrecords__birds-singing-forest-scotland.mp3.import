@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/burghrecords__birds-singing-forest-scotland.mp3-ca9d9a3853a6308be531dad998743db0.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/burghrecords__birds-singing-forest-scotland.mp3"
+dest_files=[ "res://.import/burghrecords__birds-singing-forest-scotland.mp3-ca9d9a3853a6308be531dad998743db0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

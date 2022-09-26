@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Awake.mp3-6dfb2893d8de6554c2eb157ee0e30546.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Awake.mp3"
+dest_files=[ "res://.import/Awake.mp3-6dfb2893d8de6554c2eb157ee0e30546.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

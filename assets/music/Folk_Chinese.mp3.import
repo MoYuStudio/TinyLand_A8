@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Folk_Chinese.mp3-43a9c47c43301ee713656936bf99b378.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Folk_Chinese.mp3"
+dest_files=[ "res://.import/Folk_Chinese.mp3-43a9c47c43301ee713656936bf99b378.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
