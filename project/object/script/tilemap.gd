@@ -8,11 +8,6 @@ func _ready():
 	noise.octaves = 4
 	noise.period = 20.0
 	noise.persistence = 0.8
-
-	#for i in 100:
-		# Prints a slowly-changing series of floating-point numbers
-		# between -1.0 and 1.0.
-		#print(noise.get_noise_2d(i))
 	
 	var tilemap_board = 32
 	for x in range(tilemap_board):
