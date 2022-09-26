@@ -1,0 +1,5 @@
+[2022-08-30 17:41:03]: Starting build for depot 2138222, content path is "C:\Users\Server\Downloads\steamworks_sdk_155\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-08-30 17:41:03]: Building file listing for depot 2138222 ...
+[2022-08-30 17:41:03]: Found 68 files for mapping: C:\Users\Server\Downloads\steamworks_sdk_155\sdk\tools\ContentBuilder\content * -> .
+[2022-08-30 17:41:03]: Found 68 files (98 MB) for depot 2138222
+[2022-08-30 17:41:03]: ERROR! Failed to initialize build on server (Access Denied) 

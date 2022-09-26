@@ -1,0 +1,79 @@
+[2022-08-30 17:45:40]: Starting build for depot 2138221, content path is "C:\Users\Server\Downloads\steamworks_sdk_155\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-08-30 17:45:40]: Building file listing for depot 2138221 ...
+[2022-08-30 17:45:40]: Found 68 files for mapping: C:\Users\Server\Downloads\steamworks_sdk_155\sdk\tools\ContentBuilder\content * -> .
+[2022-08-30 17:45:40]: Found 68 files (98 MB) for depot 2138221
+[2022-08-30 17:45:40]: Building depot 2138221, no baseline manifest
+[2022-08-30 17:45:41]: Found 131 chunks ( 0 used previously ) for depot 2138221, took 0 minutes, 0 seconds
+[2022-08-30 17:45:41]: Changes to baseline manifest 0 :
+[2022-08-30 17:45:41]: Added  : "assets" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\background" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\background\0.png" 4 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\block\0.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\1.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\2.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\254.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\255.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\256.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\257.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\258.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\259.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\260.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\261.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\261a1.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\262.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\262a1.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\263.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\3.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\4.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\5.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\512.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\5a1.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\block\769.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_blocks.ttf" 30 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_future.ttf" 34 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_future_narrow.ttf" 35 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_high.ttf" 28 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_high_square.ttf" 25 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_mini.ttf" 26 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_mini_square.ttf" 24 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_mini_square_mono.ttf" 25 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_pixel.ttf" 28 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_pixel_square.ttf" 25 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_rocket.ttf" 27 kB 
+[2022-08-30 17:45:41]: Added  : "assets\font\kenney_rocket_square.ttf" 25 kB 
+[2022-08-30 17:45:41]: Added  : "assets\icon" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\icon\icon.ico" 20001 kB 
+[2022-08-30 17:45:41]: Added  : "assets\icon\icon.png" 2 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\music\1996.mp3" 1172 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Awake.mp3" 4228 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Calm_and_Peaceful.mp3" 3928 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\copyright" 2 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Evening_Improvisation.mp3" 2692 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Folk_Chinese.mp3" 3136 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Sakuya.mp3" 3942 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Sakuya2.mp3" 4839 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\Sakuya3.mp3" 4711 kB 
+[2022-08-30 17:45:41]: Added  : "assets\music\The_Inspiration.mp3" 4948 kB 
+[2022-08-30 17:45:41]: Added  : "assets\sound" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\sound\burghrecords__birds-singing-forest-scotland.mp3" 907 kB 
+[2022-08-30 17:45:41]: Added  : "assets\ui" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "assets\ui\0.png" 1 kB 
+[2022-08-30 17:45:41]: Added  : "data" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "data\block" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "data\blockmap" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "data\blockmap\1.json" 1 kB 
+[2022-08-30 17:45:41]: Added  : "data\block\data.yml" 1 kB 
+[2022-08-30 17:45:41]: Added  : "data\config.yml" 1 kB 
+[2022-08-30 17:45:41]: Added  : "data\engine" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "data\engine\block.yml" 1 kB 
+[2022-08-30 17:45:41]: Added  : "data\scene" 0 kB ,Flags: 64
+[2022-08-30 17:45:41]: Added  : "data\scene\game.yml" 0 kB 
+[2022-08-30 17:45:41]: Added  : "main.exe" 46366 kB 
+[2022-08-30 17:45:41]: Added  : "your game content lives here.txt" 0 kB 
+[2022-08-30 17:45:41]: Summary: 68 files added, 0 files changed, 0 files removed
+[2022-08-30 17:45:42]: Uploading new manifest to 208.64.201.204:80 (handle 10965303494911662755, 10822 bytes).
+[2022-08-30 17:45:44]: Uploading 131 out of 131 missing chunks.
+[2022-08-30 17:46:01]: Success! New manifestID 4878553791324594137 created and 131 new chunks uploaded.
