@@ -9,7 +9,7 @@ func _ready():
 	noise.period = 20.0
 	noise.persistence = 0.8
 	
-	var tilemap_board = 32
+	var tilemap_board = 128
 	for x in range(tilemap_board):
 		for y in range(tilemap_board*2):
 			var the_noise = noise.get_noise_2d(x,y)*100+10
