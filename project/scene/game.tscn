@@ -9,3 +9,13 @@
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 160, 90 )
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUILayer"]
+margin_left = 12.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 44.0
+text = "MOVE:    WASD
+ZOOM:   QE"

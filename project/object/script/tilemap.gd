@@ -4,8 +4,8 @@ func _ready():
 	var noise = OpenSimplexNoise.new()
 	randomize()
 	# Configure the OpenSimplexNoise instance.
-	noise.seed = 10000
-	noise.octaves = 4
+	noise.seed = 0
+	noise.octaves = 3 # 4
 	noise.period = 20.0
 	noise.persistence = 0.8
 	
