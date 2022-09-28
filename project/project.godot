@@ -15,7 +15,7 @@ run/main_scene="res://main.tscn"
 boot_splash/show_image=false
 boot_splash/image="res://assets/icon/logo.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://assets/steam/icon_win256.ico"
+config/icon="res://assets/icon/icon.png"
 config/macos_native_icon="res://assets/icon/icon.png"
 config/windows_native_icon="res://assets/icon/icon.png"
 
