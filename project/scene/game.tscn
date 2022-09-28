@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/game/topleft_infoboard.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/game/button_blockboard.png" type="Texture" id=4]
 
 [node name="Game" type="Node2D"]
 
@@ -13,9 +15,17 @@ position = Vector2( 160, 90 )
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GUILayer"]
-margin_left = 12.0
-margin_top = 14.0
-margin_right = 120.0
+margin_left = 212.0
+margin_top = 10.0
+margin_right = 311.0
 margin_bottom = 44.0
 text = "MOVE:    WASD
 ZOOM:   QE"
+
+[node name="TopleftInfoboard" type="Sprite" parent="GUILayer"]
+position = Vector2( 34, 34 )
+texture = ExtResource( 3 )
+
+[node name="ButtonBlockboard" type="Sprite" parent="GUILayer"]
+position = Vector2( 160, 164 )
+texture = ExtResource( 4 )
