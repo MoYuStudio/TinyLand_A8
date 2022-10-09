@@ -133,3 +133,5 @@ cell_tile_origin = 1
 cell_y_sort = true
 format = 1
 script = ExtResource( 8 )
+
+[connection signal="land_tile" from="Building" to="Land" method="_on_Building_land_tile"]
