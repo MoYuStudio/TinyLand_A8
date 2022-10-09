@@ -134,4 +134,5 @@ cell_y_sort = true
 format = 1
 script = ExtResource( 8 )
 
-[connection signal="land_tile" from="Building" to="Land" method="_on_Building_land_tile"]
+[connection signal="land_buildable" from="Land" to="Building" method="_on_Land_land_buildable"]
+[connection signal="building_tile" from="Building" to="Land" method="_on_Building_building_tile"]
