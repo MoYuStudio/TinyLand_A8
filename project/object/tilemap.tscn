@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/block/4.tres" type="Texture" id=1]
 [ext_resource path="res://object/script/tilemap_land.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/block/512.png" type="Texture" id=7]
 [ext_resource path="res://object/script/tilemap_building.gd" type="Script" id=8]
 [ext_resource path="res://assets/block/256.png" type="Texture" id=9]
+[ext_resource path="res://assets/block/255.png" type="Texture" id=10]
+[ext_resource path="res://object/PreView.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -133,6 +135,11 @@ cell_tile_origin = 1
 cell_y_sort = true
 format = 1
 script = ExtResource( 8 )
+
+[node name="PreView" type="Sprite" parent="."]
+position = Vector2( 171, 81 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [connection signal="land_buildable" from="Land" to="Building" method="_on_Land_land_buildable"]
 [connection signal="building_tile" from="Building" to="Land" method="_on_Building_building_tile"]

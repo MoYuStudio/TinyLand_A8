@@ -32,3 +32,4 @@ func _process(delta):
 
 func _on_Land_land_buildable(switch):
 	land_buildable = switch
+	
