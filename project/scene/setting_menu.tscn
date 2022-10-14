@@ -1,3 +1,10 @@
 [gd_scene format=2]
 
 [node name="SettingMenu" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 14.0
+margin_top = 11.0
+margin_right = 101.0
+margin_bottom = 25.0
+text = "setting_menu"

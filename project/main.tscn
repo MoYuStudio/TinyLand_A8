@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scene/options_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/init.tscn" type="PackedScene" id=1]
 
 [node name="Main" type="Node2D"]
 
-[node name="OptionsMenu" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 1 )
+[node name="Init" parent="." instance=ExtResource( 1 )]
