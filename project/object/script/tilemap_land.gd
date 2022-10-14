@@ -29,7 +29,7 @@ func _ready():
 			elif the_noise <= 100:
 				set_cell(x-tilemap_board/2, y-tilemap_board/2, 3)
 	
-	print(land_map)
+	# print(land_map)
 
 func _process(delta):
 	pass

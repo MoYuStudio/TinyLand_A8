@@ -10,7 +10,7 @@
 [ext_resource path="res://object/script/tilemap_building.gd" type="Script" id=8]
 [ext_resource path="res://assets/block/256.png" type="Texture" id=9]
 [ext_resource path="res://assets/block/255.png" type="Texture" id=10]
-[ext_resource path="res://object/script/PreView.gd" type="Script" id=11]
+[ext_resource path="res://object/script/tilemap_preview_tile.gd" type="Script" id=11]
 [ext_resource path="res://object/script/tilemap_preview.gd" type="Script" id=12]
 
 [sub_resource type="TileSet" id=1]
@@ -161,10 +161,10 @@ format = 1
 script = ExtResource( 12 )
 
 [node name="1" type="Sprite" parent="PreView"]
-visible = false
-position = Vector2( 171, 81 )
+position = Vector2( 8, 0 )
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [connection signal="land_buildable" from="Land" to="Building" method="_on_Land_land_buildable"]
 [connection signal="building_tile" from="Building" to="Land" method="_on_Building_building_tile"]
+[connection signal="preview_pos" from="PreView" to="PreView/1" method="_on_PreView_preview_pos"]
