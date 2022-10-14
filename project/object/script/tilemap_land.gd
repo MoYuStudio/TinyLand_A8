@@ -37,7 +37,7 @@ func _process(delta):
 func _on_Building_building_tile(building_id,building_x,building_y):
 	print(building_id,':',building_x,'//',building_y)
 	print(get_cell(building_x,building_y))
-	if get_cell(building_x,building_y) == 4:
+	if get_cell(building_x,building_y) == 4 or get_cell(building_x,building_y) == -1:
 		emit_signal("land_buildable",false)
 	else:
 		emit_signal("land_buildable",true)
