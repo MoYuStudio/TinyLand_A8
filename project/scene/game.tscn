@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/game/topleft_infoboard.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/game/button_blockboard.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/game/infrastructure_icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/block/512.png" type="Texture" id=6]
 
 [node name="Game" type="Node2D"]
 
@@ -23,36 +24,24 @@ texture = ExtResource( 3 )
 position = Vector2( 160, 164 )
 texture = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="GUILayer"]
-margin_left = 19.0
-margin_top = 22.0
-margin_right = 59.0
-margin_bottom = 36.0
-rect_pivot_offset = Vector2( 7, 5 )
-text = "0"
-
-[node name="Label2" type="Label" parent="GUILayer"]
-margin_left = 19.0
-margin_top = 37.0
-margin_right = 59.0
-margin_bottom = 51.0
-rect_pivot_offset = Vector2( 7, 5 )
-text = "0"
-
-[node name="Label3" type="Label" parent="GUILayer"]
-margin_left = 19.0
-margin_top = 53.0
-margin_right = 59.0
-margin_bottom = 67.0
-rect_pivot_offset = Vector2( 7, 5 )
-text = "0"
-
 [node name="InfrastructureIcon" type="Sprite" parent="GUILayer"]
 position = Vector2( 188, 165 )
 texture = ExtResource( 5 )
 
-[node name="Button" type="Button" parent="GUILayer"]
-margin_left = 296.0
-margin_top = 3.0
-margin_right = 317.0
-margin_bottom = 23.0
+[node name="GridContainer" type="GridContainer" parent="GUILayer"]
+margin_left = 81.0
+margin_top = 149.0
+margin_right = 240.0
+margin_bottom = 181.0
+
+[node name="MenuButton" type="MenuButton" parent="GUILayer/GridContainer"]
+margin_right = 28.0
+margin_bottom = 22.0
+icon = ExtResource( 6 )
+
+[node name="HScrollBar" type="HScrollBar" parent="GUILayer"]
+margin_left = 126.0
+margin_top = 141.0
+margin_right = 349.0
+margin_bottom = 153.0
+rect_scale = Vector2( 0.3, 0.3 )
