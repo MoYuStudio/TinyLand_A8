@@ -5,8 +5,8 @@ func _ready():
 	connect("pressed", self, "_button_pressed")
 
 func _button_pressed():
-	if $GroundGroup.visible == true:
-		$GroundGroup.visible = false
-	elif $GroundGroup.visible == false:
+	print($GroundGroup.visible)
+	if $GroundGroup.visible == false:
 		$GroundGroup.visible = true
-	
+	elif $GroundGroup.visible == true:
+		$GroundGroup.visible = false

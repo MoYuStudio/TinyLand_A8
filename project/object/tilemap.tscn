@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/block/4.tres" type="Texture" id=1]
 [ext_resource path="res://object/script/tilemap_land.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/block/255.png" type="Texture" id=10]
 [ext_resource path="res://object/script/tilemap_preview_tile.gd" type="Script" id=11]
 [ext_resource path="res://object/script/tilemap_preview.gd" type="Script" id=12]
+[ext_resource path="res://object/script/tilemap.gd" type="Script" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -132,6 +133,7 @@
 0/z_index = 0
 
 [node name="TileMap" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="Land" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
