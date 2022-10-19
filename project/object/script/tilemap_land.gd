@@ -3,6 +3,7 @@ extends TileMap
 var land_map = []
 
 signal land_buildable(switch)
+signal autobuilding_on_land(id,x,y)
 
 func _ready():
 	var noise = OpenSimplexNoise.new()
@@ -28,6 +29,7 @@ func _ready():
 				set_cell(x-tilemap_board/2, y-tilemap_board/2, 1)
 			elif the_noise <= 100:
 				set_cell(x-tilemap_board/2, y-tilemap_board/2, 3)
+				emit_signal("autobuilding_on_land", 3, x-tilemap_board/2, y-tilemap_board/2)
 	
 	# print(land_map)
 
@@ -35,10 +37,7 @@ func _process(delta):
 	pass
 
 func _on_Building_building_tile(building_id,building_x,building_y):
-	# print(building_id,':',building_x,'//',building_y)
-	# print(get_cell(building_x,building_y))
 	if get_cell(building_x,building_y) == 4 or get_cell(building_x,building_y) == -1:
 		emit_signal("land_buildable",false)
 	else:
 		emit_signal("land_buildable",true)
-	pass
