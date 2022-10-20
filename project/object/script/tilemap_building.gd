@@ -28,13 +28,13 @@ func _process(delta):
 		#building_tile_id = 1
 		emit_signal("building_tile",building_tile_id,world_to_map(mouse_pos)[0],world_to_map(mouse_pos)[1])
 		if land_buildable == true:
-			if get_cell(block_pos[0], block_pos[1]-2) == -1:
-				set_cell(block_pos[0], block_pos[1]-2, building_tile_id)
+			if get_cell(block_pos[0], block_pos[1]-2) != -1:
+				set_cell(block_pos[0], block_pos[1]-2, -1)
 		
 
 
 func _on_Land_land_buildable(switch):
 	land_buildable = switch
 	
-func _on_Land_autobuilding_on_land(autobuilding_id,autobuilding_x,autobuilding_y):
+func _on_Land_autobuilding_on_land(autobuilding_x,autobuilding_y,autobuilding_id):
 	autobuilding_list.append([autobuilding_x,autobuilding_y,autobuilding_id])
