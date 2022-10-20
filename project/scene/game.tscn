@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/game/topleft_infoboard.png" type="Texture" id=3]
+[ext_resource path="res://assets/block/1.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/game/infrastructure_icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/block/2.png" type="Texture" id=6]
 [ext_resource path="res://scene/script/game_gui_blockboard.gd" type="Script" id=7]
 [ext_resource path="res://assets/block/0.png" type="Texture" id=8]
 [ext_resource path="res://assets/block/769.png" type="Texture" id=9]
@@ -59,13 +61,11 @@ script/source = "extends TextureButton
 var block_id = null
 
 func _ready():
-	pass
+	connect(\"pressed\", self, \"_button_pressed\")
 
-func _pressed():
-	if is_pressed():
-		block_id = 0
-	else:
-		block_id = null
+func _button_pressed():
+	block_id = 0
+
 "
 
 [sub_resource type="GDScript" id=3]
@@ -74,13 +74,22 @@ script/source = "extends TextureButton
 var block_id = null
 
 func _ready():
-	pass
+	connect(\"pressed\", self, \"_button_pressed\")
 
-func _pressed():
-	if is_pressed():
-		block_id = 1
-	else:
-		block_id = null
+func _button_pressed():
+	block_id = 1
+"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 2
 "
 
 [node name="Game" type="Node2D"]
@@ -197,23 +206,30 @@ margin_right = 164.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 21
 script = SubResource( 5 )
 
 [node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
 margin_right = 16.0
 margin_bottom = 29.0
 mouse_filter = 1
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 8 )
 script = SubResource( 2 )
 
 [node name="Tile1" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
-margin_left = 37.0
-margin_right = 53.0
+margin_left = 20.0
+margin_right = 36.0
 margin_bottom = 29.0
 mouse_filter = 1
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 4 )
 script = SubResource( 3 )
+
+[node name="Tile2" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 6 )
+script = SubResource( 7 )
 
 [node name="Farming" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 106.0
