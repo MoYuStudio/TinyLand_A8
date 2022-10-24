@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://assets/block/512.png" type="Texture" id=11]
 [ext_resource path="res://assets/block/4.tres" type="Texture" id=12]
 [ext_resource path="res://assets/block/3.png" type="Texture" id=13]
+[ext_resource path="res://assets/block/263.png" type="Texture" id=14]
+[ext_resource path="res://assets/block/257.png" type="Texture" id=15]
+[ext_resource path="res://assets/block/129.tres" type="Texture" id=16]
+[ext_resource path="res://assets/block/262.tres" type="Texture" id=17]
+[ext_resource path="res://assets/ui/kenney/input_prompts/tile_0651.png" type="Texture" id=18]
+[ext_resource path="res://assets/block/255.png" type="Texture" id=19]
+[ext_resource path="res://assets/ui/kenney/input_prompts/tile_0717.png" type="Texture" id=20]
+[ext_resource path="res://assets/ui/kenney/input_prompts/tile_0716.png" type="Texture" id=21]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends TextureButton
@@ -21,11 +29,11 @@ func _ready():
 	$Group.visible = false
 	
 func _pressed():
-	if is_pressed():
-		if $Group.visible == false:
-			$Group.visible = true
-		elif $Group.visible == true:
-			$Group.visible = false
+	if $Group.visible == true:
+		$Group.visible = false
+	elif $Group.visible == false:
+		$Group.visible = true
+		
 "
 
 [sub_resource type="Theme" id=6]
@@ -61,6 +69,7 @@ func _ready():
 
 func _button_pressed():
 	block_id = 1
+
 "
 
 [sub_resource type="GDScript" id=7]
@@ -73,6 +82,7 @@ func _ready():
 
 func _button_pressed():
 	block_id = 2
+
 "
 
 [sub_resource type="GDScript" id=8]
@@ -85,6 +95,7 @@ func _ready():
 
 func _button_pressed():
 	block_id = 3
+
 "
 
 [sub_resource type="GDScript" id=9]
@@ -97,6 +108,98 @@ func _ready():
 
 func _button_pressed():
 	block_id = 4
+
+"
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 256
+
+"
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 257
+
+"
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 262
+
+"
+
+[sub_resource type="GDScript" id=13]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 263
+
+"
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 129
+
+"
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 512
+
+"
+
+[sub_resource type="GDScript" id=16]
+script/source = "extends TextureButton
+
+var block_id = null
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	block_id = 769
+
 "
 
 [node name="Game" type="Node2D"]
@@ -108,17 +211,25 @@ position = Vector2( 160, 90 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
+[node name="Home" type="TextureButton" parent="GUI"]
+margin_left = 300.0
+margin_top = 4.0
+margin_right = 316.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 20 )
+
+[node name="Setting" type="TextureButton" parent="GUI"]
+margin_left = 300.0
+margin_top = 21.0
+margin_right = 316.0
+margin_bottom = 37.0
+texture_normal = ExtResource( 18 )
+
 [node name="TopleftInfoboard" type="Sprite" parent="GUI"]
+visible = false
 position = Vector2( 34, 34 )
 texture = ExtResource( 3 )
-
-[node name="HScrollBar" type="HScrollBar" parent="GUI"]
-visible = false
-margin_left = 126.0
-margin_top = 141.0
-margin_right = 349.0
-margin_bottom = 153.0
-rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="Blockboard" type="Control" parent="GUI"]
 margin_right = 40.0
@@ -190,6 +301,7 @@ expand = true
 script = SubResource( 1 )
 
 [node name="Group" type="Control" parent="GUI/BlockboardGroup/Ground"]
+visible = false
 margin_left = -4.0
 margin_top = -33.0
 margin_right = 160.0
@@ -253,60 +365,244 @@ mouse_filter = 1
 texture_normal = ExtResource( 12 )
 script = SubResource( 9 )
 
-[node name="Farming" type="Button" parent="GUI/BlockboardGroup"]
-margin_left = 106.0
-margin_top = 154.0
-margin_right = 134.0
-margin_bottom = 176.0
-icon = ExtResource( 10 )
-flat = true
-
-[node name="FarmingGroup" type="Control" parent="GUI/BlockboardGroup/Farming"]
-margin_left = -109.0
-margin_top = -155.0
-margin_right = -69.0
-margin_bottom = -115.0
-
-[node name="Industrial" type="Button" parent="GUI/BlockboardGroup"]
-margin_left = 133.0
-margin_top = 154.0
-margin_right = 161.0
-margin_bottom = 176.0
-icon = ExtResource( 11 )
-flat = true
-
-[node name="IndustrialGroup" type="Control" parent="GUI/BlockboardGroup/Industrial"]
-margin_left = -132.0
-margin_top = -155.0
-margin_right = -92.0
-margin_bottom = -115.0
-
-[node name="Finance" type="Button" parent="GUI/BlockboardGroup"]
-margin_left = 160.0
-margin_top = 154.0
-margin_right = 188.0
-margin_bottom = 176.0
-icon = ExtResource( 9 )
-flat = true
-
-[node name="FinanceGroup" type="Control" parent="GUI/BlockboardGroup/Finance"]
-margin_left = -155.0
-margin_top = -155.0
-margin_right = -115.0
-margin_bottom = -115.0
-
-[node name="Infrastructure" type="Button" parent="GUI/BlockboardGroup"]
-margin_left = 187.0
+[node name="Farming" type="TextureButton" parent="GUI/BlockboardGroup"]
+margin_left = 109.0
 margin_top = 155.0
-margin_right = 215.0
-margin_bottom = 177.0
-icon = ExtResource( 5 )
-flat = true
+margin_right = 130.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 15 )
+expand = true
+script = SubResource( 1 )
 
-[node name="InfrastructureGroup" type="Control" parent="GUI/BlockboardGroup/Infrastructure"]
-margin_left = -178.0
-margin_top = -155.0
-margin_right = -138.0
-margin_bottom = -115.0
+[node name="Group" type="Control" parent="GUI/BlockboardGroup/Farming"]
+visible = false
+margin_left = -31.0
+margin_top = -33.0
+margin_right = 133.0
+margin_bottom = -4.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI/BlockboardGroup/Farming/Group"]
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 29.0
+color = Color( 0, 0, 0, 0.117647 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/BlockboardGroup/Farming/Group"]
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 39.0
+theme = SubResource( 6 )
+script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 10 )
+script = SubResource( 10 )
+
+[node name="Tile1" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 15 )
+script = SubResource( 11 )
+
+[node name="Tile2" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 17 )
+script = SubResource( 12 )
+
+[node name="Tile3" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 14 )
+script = SubResource( 13 )
+
+[node name="Tile4" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 16 )
+script = SubResource( 14 )
+
+[node name="Industrial" type="TextureButton" parent="GUI/BlockboardGroup"]
+margin_left = 136.0
+margin_top = 155.0
+margin_right = 157.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 11 )
+expand = true
+script = SubResource( 1 )
+
+[node name="Group" type="Control" parent="GUI/BlockboardGroup/Industrial"]
+visible = false
+margin_left = -58.0
+margin_top = -33.0
+margin_right = 106.0
+margin_bottom = -4.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI/BlockboardGroup/Industrial/Group"]
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 29.0
+color = Color( 0, 0, 0, 0.117647 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/BlockboardGroup/Industrial/Group"]
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 39.0
+theme = SubResource( 6 )
+script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/BlockboardGroup/Industrial/Group/ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Industrial/Group/ScrollContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 11 )
+script = SubResource( 15 )
+
+[node name="Finance" type="TextureButton" parent="GUI/BlockboardGroup"]
+margin_left = 163.0
+margin_top = 155.0
+margin_right = 184.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 9 )
+expand = true
+script = SubResource( 1 )
+
+[node name="Group" type="Control" parent="GUI/BlockboardGroup/Finance"]
+visible = false
+margin_left = -85.0
+margin_top = -33.0
+margin_right = 79.0
+margin_bottom = -4.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI/BlockboardGroup/Finance/Group"]
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 29.0
+color = Color( 0, 0, 0, 0.117647 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/BlockboardGroup/Finance/Group"]
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 39.0
+theme = SubResource( 6 )
+script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/BlockboardGroup/Finance/Group/ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Finance/Group/ScrollContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 9 )
+script = SubResource( 16 )
+
+[node name="Infrastructure" type="TextureButton" parent="GUI/BlockboardGroup"]
+margin_left = 190.0
+margin_top = 155.0
+margin_right = 211.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 5 )
+expand = true
+script = SubResource( 1 )
+
+[node name="Group" type="Control" parent="GUI/BlockboardGroup/Infrastructure"]
+visible = false
+margin_left = -112.0
+margin_top = -33.0
+margin_right = 52.0
+margin_bottom = -4.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI/BlockboardGroup/Infrastructure/Group"]
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 29.0
+color = Color( 0, 0, 0, 0.117647 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/BlockboardGroup/Infrastructure/Group"]
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 39.0
+theme = SubResource( 6 )
+script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/BlockboardGroup/Infrastructure/Group/ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Infrastructure/Group/ScrollContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 19 )
+
+[node name="Other" type="TextureButton" parent="GUI/BlockboardGroup"]
+margin_left = 217.0
+margin_top = 155.0
+margin_right = 238.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 18 )
+expand = true
+script = SubResource( 1 )
+
+[node name="Group" type="Control" parent="GUI/BlockboardGroup/Other"]
+visible = false
+margin_left = -139.0
+margin_top = -33.0
+margin_right = 25.0
+margin_bottom = -4.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI/BlockboardGroup/Other/Group"]
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 29.0
+color = Color( 0, 0, 0, 0.117647 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/BlockboardGroup/Other/Group"]
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 39.0
+theme = SubResource( 6 )
+script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/BlockboardGroup/Other/Group/ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tile0" type="TextureButton" parent="GUI/BlockboardGroup/Other/Group/ScrollContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 29.0
+mouse_filter = 1
+texture_normal = ExtResource( 19 )
 
 [connection signal="block_be_choose" from="GUI/BlockboardGroup" to="TileMap" method="_on_BlockboardGroup_block_be_choose"]
