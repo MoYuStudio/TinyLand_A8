@@ -1,13 +1,22 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/block/0.png" type="Texture" id=2]
-[ext_resource path="res://assets/block/3.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/kenney_pixel_128.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/icon/logo.png" type="Texture" id=5]
-[ext_resource path="res://assets/steam/steam_ku_main.png" type="Texture" id=6]
 [ext_resource path="res://assets/icon/icon.png" type="Texture" id=7]
-[ext_resource path="res://assets/block/512.png" type="Texture" id=8]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+func _ready():
+	$GUI/Icon/AnimationPlayer.play(\"init\")
+
+func _physics_process(delta):
+	var mouse_pos = get_global_mouse_position()
+	
+	$GUI.position.x = - mouse_pos.x/9 + 1920/16
+	$GUI.position.y = - mouse_pos.y/9 + 1080/16
+"
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -39,59 +48,96 @@ func _button_pressed():
 	get_tree().quit()
 "
 
+[sub_resource type="Animation" id=5]
+resource_name = "init"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
 [node name="OptionsMenu" type="Node2D"]
+script = SubResource( 4 )
 
-[node name="SteamKuMain" type="Sprite" parent="."]
-modulate = Color( 0.388235, 0.388235, 0.388235, 1 )
-position = Vector2( 989, 550 )
-scale = Vector2( 0.893347, 0.893347 )
-texture = ExtResource( 6 )
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1266.0
+margin_top = -720.0
+margin_right = 3734.0
+margin_bottom = 1780.0
+color = Color( 0, 0, 0, 1 )
 
-[node name="StartButton" type="Button" parent="."]
-margin_left = 1102.0
-margin_top = 377.0
-margin_right = 1260.0
-margin_bottom = 431.0
+[node name="GUI" type="Node2D" parent="."]
+
+[node name="StartButton" type="Button" parent="GUI"]
+margin_left = 412.0
+margin_top = 302.0
+margin_right = 826.0
+margin_bottom = 404.0
 custom_fonts/font = ExtResource( 4 )
-text = "Start"
-icon = ExtResource( 2 )
+text = "NEW"
 flat = true
 script = SubResource( 1 )
 
-[node name="SettingButton" type="Button" parent="."]
-margin_left = 1102.0
-margin_top = 539.0
-margin_right = 1276.0
-margin_bottom = 593.0
+[node name="StartButton2" type="Button" parent="GUI"]
+margin_left = 892.0
+margin_top = 186.0
+margin_right = 1306.0
+margin_bottom = 288.0
 custom_fonts/font = ExtResource( 4 )
-text = "Setting"
-icon = ExtResource( 8 )
+text = "LOAD"
+flat = true
+
+[node name="SettingButton" type="Button" parent="GUI"]
+margin_left = 442.0
+margin_top = 700.0
+margin_right = 774.0
+margin_bottom = 802.0
+custom_fonts/font = ExtResource( 4 )
+text = "SETTING"
 flat = true
 script = SubResource( 2 )
 
-[node name="QuitButton" type="Button" parent="."]
-margin_left = 1110.0
-margin_top = 709.0
-margin_right = 1216.0
-margin_bottom = 763.0
+[node name="QuitButton" type="Button" parent="GUI"]
+margin_left = 1111.0
+margin_top = 785.0
+margin_right = 1299.0
+margin_bottom = 887.0
 custom_fonts/font = ExtResource( 4 )
-text = "Quit"
-icon = ExtResource( 3 )
+text = "QUIT"
 flat = true
 script = SubResource( 3 )
 
-[node name="Ver" type="Label" parent="."]
-margin_left = 1639.0
-margin_top = 1013.0
-margin_right = 1895.0
-margin_bottom = 1061.0
-custom_fonts/font = ExtResource( 1 )
-text = "Ver 202210a1"
-
-[node name="Logo" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
+[node name="Logo" type="Sprite" parent="GUI"]
+position = Vector2( 1334, 531 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Icon" type="Sprite" parent="."]
-position = Vector2( 488, 501 )
+[node name="Icon" type="Sprite" parent="GUI"]
+position = Vector2( 960, 540 )
+rotation = 6.28319
 texture = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Icon"]
+playback_speed = 0.2
+anims/init = SubResource( 5 )
+
+[node name="GUI2" type="CanvasLayer" parent="."]
+
+[node name="Ver" type="Label" parent="GUI2"]
+modulate = Color( 1, 1, 1, 0.254902 )
+margin_left = 832.0
+margin_top = 999.0
+margin_right = 1088.0
+margin_bottom = 1047.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ver 202210a1"

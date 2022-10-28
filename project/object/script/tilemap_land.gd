@@ -21,7 +21,8 @@ func _ready():
 	forest_noise.period = 25 # 20.0
 	forest_noise.persistence = 0.8
 	
-	var tilemap_board = 128
+	var tilemap_board = 256
+	var tilemap_offset = 40
 	
 	for x in range(tilemap_board):
 		for y in range(tilemap_board*2):
@@ -30,24 +31,24 @@ func _ready():
 			var the_forest_noise = forest_noise.get_noise_2d(x,y)*100+10
 
 			if the_land_noise <= 0:
-				set_cell(x-tilemap_board/2, y-tilemap_board/2, 4)
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 4)
 			elif the_land_noise <= 7:
-				set_cell(x-tilemap_board/2, y-tilemap_board/2, 2)
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 2)
 			elif the_land_noise <= 43:
-				set_cell(x-tilemap_board/2, y-tilemap_board/2, 0)
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 0)
 			elif the_land_noise <= 50:
-				set_cell(x-tilemap_board/2, y-tilemap_board/2, 1)
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 1)
 			elif the_land_noise <= 100:
-				set_cell(x-tilemap_board/2, y-tilemap_board/2, 3)
-				emit_signal("autobuilding_on_land", x-tilemap_board/2, y-tilemap_board/2, 3)
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 3)
+				emit_signal("autobuilding_on_land", x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 3)
 	
 			if the_forest_noise <= -5:
-				if get_cell(x-tilemap_board/2, y-tilemap_board/2) == 2 \
-				or get_cell(x-tilemap_board/2, y-tilemap_board/2) == 3 \
-				or get_cell(x-tilemap_board/2, y-tilemap_board/2) == 4:
+				if get_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset) == 2 \
+				or get_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset) == 3 \
+				or get_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset) == 4:
 					pass
 				else:
-					emit_signal("autobuilding_on_land", x-tilemap_board/2, y-tilemap_board/2, 129)
+					emit_signal("autobuilding_on_land", x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 129)
 	# print(land_map)
 
 func _process(delta):
