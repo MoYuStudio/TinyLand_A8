@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/font/kenney_pixel_128.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/ui/kenney/input_prompts/tile_0717.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/kenney/input_prompts/tile_0716.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends TextureButton
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().change_scene(\"res://scene/options_menu.tscn\")
+"
 
 [node name="SettingMenu" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( -1163, 29 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Title" type="Label" parent="."]
 margin_left = 104.0
@@ -10,4 +28,14 @@ margin_top = 63.0
 margin_right = 325.0
 margin_bottom = 138.0
 custom_fonts/font = ExtResource( 1 )
-text = "setting_menu"
+text = "setting menu"
+
+[node name="Home" type="TextureButton" parent="."]
+margin_left = 1767.0
+margin_top = 40.0
+margin_right = 1863.0
+margin_bottom = 136.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+expand = true
+script = SubResource( 1 )
