@@ -3,8 +3,8 @@ extends Camera2D
 var move_velocity = Vector2.ZERO
 var move_speed = 2.5
 
-var zoom_velocity = Vector2(1,1)
-var zoom_speed = 0.025
+var zoom_velocity = Vector2(0.2,0.2)
+var zoom_speed = 0.0025
 
 func _ready():
 	pass

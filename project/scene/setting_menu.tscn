@@ -1,10 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/font/kenney_pixel_128.tres" type="DynamicFont" id=1]
 
 [node name="SettingMenu" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
-margin_left = 14.0
-margin_top = 11.0
-margin_right = 101.0
-margin_bottom = 25.0
+[node name="Title" type="Label" parent="."]
+margin_left = 104.0
+margin_top = 63.0
+margin_right = 325.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 1 )
 text = "setting_menu"

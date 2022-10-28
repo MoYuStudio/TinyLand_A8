@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/kenney_pixel.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+size = 128
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends OptionButton
+
+func _ready():
+	add_item('Survival')
+	add_item('Creativity')
+"
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().change_scene(\"res://scene/game.tscn\")
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().change_scene(\"res://scene/options_menu.tscn\")
+"
+
+[node name="CreateMapMenu" type="Node2D"]
+
+[node name="Title" type="Label" parent="."]
+margin_left = 65.0
+margin_top = 46.0
+margin_right = 585.0
+margin_bottom = 142.0
+custom_fonts/font = SubResource( 4 )
+text = "Create A Map"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 533.0
+margin_top = 287.0
+margin_right = 629.0
+margin_bottom = 335.0
+custom_fonts/font = ExtResource( 1 )
+text = "Seed"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 715.0
+margin_top = 301.0
+margin_right = 1151.0
+margin_bottom = 359.0
+custom_fonts/font = ExtResource( 1 )
+align = 1
+placeholder_text = "enter seed here"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 750.0
+margin_top = 534.0
+margin_right = 1086.0
+margin_bottom = 588.0
+custom_fonts/font = ExtResource( 1 )
+script = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 657.0
+margin_top = 840.0
+margin_right = 809.0
+margin_bottom = 894.0
+custom_fonts/font = ExtResource( 1 )
+text = "Create"
+icon_align = 1
+script = SubResource( 1 )
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 1025.0
+margin_top = 851.0
+margin_right = 1177.0
+margin_bottom = 905.0
+custom_fonts/font = ExtResource( 1 )
+text = "Cancel"
+script = SubResource( 2 )

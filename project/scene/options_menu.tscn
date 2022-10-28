@@ -1,67 +1,97 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scene/script/options_menu_quit_button.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/block/0.png" type="Texture" id=2]
 [ext_resource path="res://assets/block/3.png" type="Texture" id=3]
-[ext_resource path="res://scene/script/options_menu_start_button.gd" type="Script" id=4]
+[ext_resource path="res://assets/font/kenney_pixel_128.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/icon/logo.png" type="Texture" id=5]
 [ext_resource path="res://assets/steam/steam_ku_main.png" type="Texture" id=6]
 [ext_resource path="res://assets/icon/icon.png" type="Texture" id=7]
 [ext_resource path="res://assets/block/512.png" type="Texture" id=8]
-[ext_resource path="res://scene/script/options_menu_setting_button.gd" type="Script" id=9]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().change_scene(\"res://scene/createmap_menu.tscn\")
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().change_scene(\"res://scene/setting_menu.tscn\")
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", self, \"_button_pressed\")
+
+func _button_pressed():
+	get_tree().quit()
+"
 
 [node name="OptionsMenu" type="Node2D"]
 
 [node name="SteamKuMain" type="Sprite" parent="."]
 modulate = Color( 0.388235, 0.388235, 0.388235, 1 )
-position = Vector2( 200.516, 89.75 )
-scale = Vector2( 0.14879, 0.14879 )
+position = Vector2( 989, 550 )
+scale = Vector2( 0.893347, 0.893347 )
 texture = ExtResource( 6 )
 
 [node name="StartButton" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 62.0
-margin_right = 236.0
-margin_bottom = 84.0
+margin_left = 1102.0
+margin_top = 377.0
+margin_right = 1260.0
+margin_bottom = 431.0
+custom_fonts/font = ExtResource( 4 )
 text = "Start"
 icon = ExtResource( 2 )
 flat = true
-script = ExtResource( 4 )
+script = SubResource( 1 )
 
 [node name="SettingButton" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 87.0
-margin_right = 251.0
-margin_bottom = 109.0
+margin_left = 1102.0
+margin_top = 539.0
+margin_right = 1276.0
+margin_bottom = 593.0
+custom_fonts/font = ExtResource( 4 )
 text = "Setting"
 icon = ExtResource( 8 )
 flat = true
-script = ExtResource( 9 )
+script = SubResource( 2 )
 
 [node name="QuitButton" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 112.0
-margin_right = 235.0
-margin_bottom = 134.0
+margin_left = 1110.0
+margin_top = 709.0
+margin_right = 1216.0
+margin_bottom = 763.0
+custom_fonts/font = ExtResource( 4 )
 text = "Quit"
 icon = ExtResource( 3 )
 flat = true
-script = ExtResource( 1 )
+script = SubResource( 3 )
 
 [node name="Ver" type="Label" parent="."]
-margin_left = 258.0
-margin_top = 170.0
-margin_right = 346.0
-margin_bottom = 184.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 1639.0
+margin_top = 1013.0
+margin_right = 1895.0
+margin_bottom = 1061.0
+custom_fonts/font = ExtResource( 1 )
 text = "Ver 202210a1"
 
 [node name="Logo" type="Sprite" parent="."]
-position = Vector2( 9, 9 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 32, 32 )
 texture = ExtResource( 5 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 83, 92 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 488, 501 )
 texture = ExtResource( 7 )
