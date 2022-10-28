@@ -2,8 +2,6 @@ extends Control
 
 var the_group = null
 
-
-
 signal block_be_choose(id)
 
 func _ready():
