@@ -76,8 +76,10 @@ tracks/0/keys = {
 script = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_left = -2674.0
+margin_top = -1839.0
+margin_right = 4575.0
+margin_bottom = 2879.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Logo" type="Sprite" parent="."]

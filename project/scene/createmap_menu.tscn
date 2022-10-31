@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/kenney_pixel.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,18 @@ script/source = "extends OptionButton
 func _ready():
 	add_item('Survival')
 	add_item('Creativity')
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends OptionButton
+
+func _ready():
+	add_item('64')
+	add_item('128')
+	add_item('256')
+
+func _physics_process(delta):
+	pass
 "
 
 [sub_resource type="GDScript" id=1]
@@ -67,13 +79,40 @@ custom_fonts/font = ExtResource( 1 )
 align = 1
 placeholder_text = "enter seed here"
 
+[node name="Label2" type="Label" parent="."]
+margin_left = 537.0
+margin_top = 414.0
+margin_right = 633.0
+margin_bottom = 462.0
+custom_fonts/font = ExtResource( 1 )
+text = "mod"
+
 [node name="OptionButton" type="OptionButton" parent="."]
-margin_left = 733.0
-margin_top = 489.0
-margin_right = 1069.0
-margin_bottom = 543.0
+margin_left = 715.0
+margin_top = 412.0
+margin_right = 1051.0
+margin_bottom = 466.0
 custom_fonts/font = ExtResource( 1 )
 script = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 539.0
+margin_top = 523.0
+margin_right = 635.0
+margin_bottom = 571.0
+custom_fonts/font = ExtResource( 1 )
+text = "size"
+
+[node name="OptionButton2" type="OptionButton" parent="."]
+margin_left = 717.0
+margin_top = 524.0
+margin_right = 1053.0
+margin_bottom = 578.0
+custom_fonts/font = ExtResource( 1 )
+script = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }

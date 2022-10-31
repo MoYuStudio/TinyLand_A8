@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://assets/block/255.png" type="Texture" id=19]
 [ext_resource path="res://assets/ui/kenney/input_prompts/tile_0717.png" type="Texture" id=20]
 [ext_resource path="res://assets/ui/kenney/input_prompts/tile_0716.png" type="Texture" id=21]
+[ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=22]
+[ext_resource path="res://assets/font/kenney_pixel_12.tres" type="DynamicFont" id=23]
 
 [sub_resource type="GDScript" id=17]
 script/source = "extends TextureButton
@@ -40,6 +42,22 @@ func _ready():
 
 func _button_pressed():
 	get_tree().change_scene(\"res://scene/setting_menu.tscn\")
+"
+
+[sub_resource type="GDScript" id=19]
+script/source = "extends Control
+
+var tech_integral_num = 0
+var population_num = 0
+var money_num = 100
+
+func _ready():
+	pass
+
+func _physics_process(delta):
+	$TechIntegral.text = str(tech_integral_num)
+	$Population.text = str(population_num)
+	$Money.text = str(money_num)
 "
 
 [sub_resource type="GDScript" id=1]
@@ -70,9 +88,11 @@ func _ready():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 0
@@ -83,9 +103,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 1
@@ -96,9 +118,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 2
@@ -109,9 +133,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 3
@@ -122,9 +148,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 4
@@ -135,9 +163,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 256
@@ -148,9 +178,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 257
@@ -161,9 +193,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 262
@@ -174,9 +208,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 263
@@ -187,9 +223,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 129
@@ -200,9 +238,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 512
@@ -213,9 +253,11 @@ func _button_pressed():
 script/source = "extends TextureButton
 
 var block_id = null
+var cost_money = 10
 
 func _ready():
 	connect(\"pressed\", self, \"_button_pressed\")
+	$Cost.text = str(cost_money)
 
 func _button_pressed():
 	block_id = 769
@@ -251,10 +293,39 @@ texture_normal = ExtResource( 18 )
 expand = true
 script = SubResource( 18 )
 
-[node name="TopleftInfoboard" type="Sprite" parent="GUI"]
-visible = false
-position = Vector2( 34, 34 )
+[node name="Infoboard" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = SubResource( 19 )
+
+[node name="TopleftInfoboard" type="Sprite" parent="GUI/Infoboard"]
+scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
+centered = false
+
+[node name="TechIntegral" type="Label" parent="GUI/Infoboard"]
+margin_left = 70.0
+margin_top = 75.0
+margin_right = 214.0
+margin_bottom = 171.0
+custom_fonts/font = ExtResource( 22 )
+text = "000000"
+
+[node name="Population" type="Label" parent="GUI/Infoboard"]
+margin_left = 70.0
+margin_top = 135.0
+margin_right = 214.0
+margin_bottom = 231.0
+custom_fonts/font = ExtResource( 22 )
+text = "000000"
+
+[node name="Money" type="Label" parent="GUI/Infoboard"]
+margin_left = 70.0
+margin_top = 200.0
+margin_right = 214.0
+margin_bottom = 296.0
+custom_fonts/font = ExtResource( 22 )
+text = "000000"
 
 [node name="Blockboard" type="Control" parent="GUI"]
 margin_right = 40.0
@@ -266,49 +337,49 @@ margin_left = 480.0
 margin_top = 922.0
 margin_right = 1433.76
 margin_bottom = 1178.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect2" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 513.0
 margin_top = 952.0
 margin_right = 641.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect3" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 667.0
 margin_top = 952.0
 margin_right = 795.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect4" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 819.0
 margin_top = 952.0
 margin_right = 947.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect5" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 972.0
 margin_top = 952.0
 margin_right = 1100.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect6" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 1126.0
 margin_top = 952.0
 margin_right = 1254.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="ColorRect7" type="ColorRect" parent="GUI/Blockboard"]
 margin_left = 1279.0
 margin_top = 953.0
 margin_right = 1407.0
 margin_bottom = 1081.0
-color = Color( 0, 0, 0, 0.12549 )
+color = Color( 1, 1, 1, 0.12549 )
 
 [node name="BlockboardGroup" type="Control" parent="GUI"]
 margin_right = 40.0
@@ -359,6 +430,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 8 )
 script = SubResource( 2 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile1" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
 margin_left = 20.0
 margin_right = 36.0
@@ -366,6 +445,14 @@ margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 4 )
 script = SubResource( 3 )
+
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer/Tile1"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
 
 [node name="Tile2" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
 margin_left = 40.0
@@ -375,6 +462,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 6 )
 script = SubResource( 7 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer/Tile2"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile3" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
 margin_left = 60.0
 margin_right = 76.0
@@ -383,6 +478,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 13 )
 script = SubResource( 8 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer/Tile3"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile4" type="TextureButton" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer"]
 margin_left = 80.0
 margin_right = 96.0
@@ -390,6 +493,14 @@ margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 12 )
 script = SubResource( 9 )
+
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Ground/Group/ScrollContainer/HBoxContainer/Tile4"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
 
 [node name="Farming" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 661.0
@@ -435,6 +546,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 10 )
 script = SubResource( 10 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile1" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
 margin_left = 20.0
 margin_right = 36.0
@@ -442,6 +561,14 @@ margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 15 )
 script = SubResource( 11 )
+
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer/Tile1"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
 
 [node name="Tile2" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
 margin_left = 40.0
@@ -451,6 +578,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 17 )
 script = SubResource( 12 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer/Tile2"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile3" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
 margin_left = 60.0
 margin_right = 76.0
@@ -459,6 +594,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 14 )
 script = SubResource( 13 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer/Tile3"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Tile4" type="TextureButton" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer"]
 margin_left = 80.0
 margin_right = 96.0
@@ -466,6 +609,14 @@ margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 16 )
 script = SubResource( 14 )
+
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Farming/Group/ScrollContainer/HBoxContainer/Tile4"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
 
 [node name="Industrial" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 813.0
@@ -511,6 +662,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 11 )
 script = SubResource( 15 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Industrial/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Finance" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 966.0
 margin_top = 946.0
@@ -555,6 +714,14 @@ mouse_filter = 1
 texture_normal = ExtResource( 9 )
 script = SubResource( 16 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Finance/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Infrastructure" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 1120.0
 margin_top = 946.0
@@ -598,6 +765,14 @@ margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 19 )
 
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Infrastructure/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
+
 [node name="Other" type="Button" parent="GUI/BlockboardGroup"]
 margin_left = 1273.0
 margin_top = 946.0
@@ -640,5 +815,13 @@ margin_right = 16.0
 margin_bottom = 24.0
 mouse_filter = 1
 texture_normal = ExtResource( 19 )
+
+[node name="Cost" type="Label" parent="GUI/BlockboardGroup/Other/Group/ScrollContainer/HBoxContainer/Tile0"]
+margin_left = 11.862
+margin_top = 7.758
+margin_right = 16.862
+margin_bottom = 17.758
+custom_fonts/font = ExtResource( 23 )
+text = "0"
 
 [connection signal="block_be_choose" from="GUI/BlockboardGroup" to="TileMap" method="_on_BlockboardGroup_block_be_choose"]
