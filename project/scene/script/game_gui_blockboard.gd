@@ -2,7 +2,7 @@ extends Control
 
 var the_group = null
 
-signal block_be_choose(id)
+signal block_be_choose(id,cost)
 
 func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -50,7 +50,7 @@ func _physics_process(delta):
 					
 	for tile in tile_list:
 		if tile.block_id != null:
-			emit_signal("block_be_choose",tile.block_id)
+			emit_signal("block_be_choose",tile.block_id,tile.cost_money)
 			tile.block_id = null
 		
 

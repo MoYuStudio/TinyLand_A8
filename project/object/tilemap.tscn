@@ -52,5 +52,6 @@ script = ExtResource( 11 )
 
 [connection signal="autobuilding_on_land" from="Land" to="Building" method="_on_Land_autobuilding_on_land"]
 [connection signal="land_buildable" from="Land" to="Building" method="_on_Land_land_buildable"]
+[connection signal="building_cost" from="Building" to="." method="_on_Building_building_cost"]
 [connection signal="building_tile" from="Building" to="Land" method="_on_Building_building_tile"]
 [connection signal="preview_pos" from="PreView" to="PreView/1" method="_on_PreView_preview_pos"]

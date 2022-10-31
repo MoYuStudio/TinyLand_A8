@@ -47,6 +47,8 @@ func _button_pressed():
 [sub_resource type="GDScript" id=19]
 script/source = "extends Control
 
+signal payable(switch)
+
 var tech_integral_num = 0
 var population_num = 0
 var money_num = 100
@@ -55,9 +57,16 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+		
 	$TechIntegral.text = str(tech_integral_num)
 	$Population.text = str(population_num)
 	$Money.text = str(money_num)
+
+func _on_TileMap_building_cost(cost):
+	if money_num >= cost:
+		money_num -= cost
+	else:
+		emit_signal(\"payable\",false)
 "
 
 [sub_resource type="GDScript" id=1]
@@ -824,4 +833,6 @@ margin_bottom = 17.758
 custom_fonts/font = ExtResource( 23 )
 text = "0"
 
+[connection signal="building_cost" from="TileMap" to="GUI/Infoboard" method="_on_TileMap_building_cost"]
+[connection signal="payable" from="GUI/Infoboard" to="TileMap" method="_on_Infoboard_payable"]
 [connection signal="block_be_choose" from="GUI/BlockboardGroup" to="TileMap" method="_on_BlockboardGroup_block_be_choose"]
