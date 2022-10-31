@@ -1,6 +1,7 @@
 extends Node2D
 
 signal building_cost(cost)
+signal building_yield(num)
 
 func _ready():
 	pass
@@ -17,3 +18,6 @@ func _on_Building_building_cost(cost):
 
 func _on_Infoboard_payable(switch):
 	$Building.payable = switch
+
+func _on_Building_building_yield(num):
+	emit_signal("building_yield",num)

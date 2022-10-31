@@ -2,12 +2,14 @@ extends TileMap
 
 var building_tile_id = -1
 var building_tile_cost = 0
+var building_yield_total = 0
 var land_buildable = true
 var payable = true
 var autobuilding_list = []
 
 signal building_tile(id,x,y)
 signal building_cost(cost)
+signal building_yield(num)
 
 func _ready():
 	for autobuilding_data in autobuilding_list:
@@ -37,7 +39,14 @@ func _process(delta):
 		if land_buildable == true:
 			if get_cell(block_pos[0], block_pos[1]-2) != -1:
 				set_cell(block_pos[0], block_pos[1]-2, -1)
-		
+	
+	var building_yield_total = 0
+	
+	var building_512 = get_used_cells_by_id(512).size()
+	building_yield_total += building_512
+	emit_signal("building_yield",building_yield_total)
+	
+	
 
 
 func _on_Land_land_buildable(switch):

@@ -63,10 +63,18 @@ func _physics_process(delta):
 	$Money.text = str(money_num)
 
 func _on_TileMap_building_cost(cost):
-	if money_num >= cost:
-		money_num -= cost
-	else:
+	if money_num <= cost:
 		emit_signal(\"payable\",false)
+	else:
+		money_num -= cost
+
+func _on_TileMap_building_yield(num):
+	if $TickTimer.is_stopped():
+		$TickTimer.start()
+		money_num += num
+		emit_signal(\"payable\",true)
+		
+
 "
 
 [sub_resource type="GDScript" id=1]
@@ -335,6 +343,9 @@ margin_right = 214.0
 margin_bottom = 296.0
 custom_fonts/font = ExtResource( 22 )
 text = "000000"
+
+[node name="TickTimer" type="Timer" parent="GUI/Infoboard"]
+one_shot = true
 
 [node name="Blockboard" type="Control" parent="GUI"]
 margin_right = 40.0
@@ -834,5 +845,6 @@ custom_fonts/font = ExtResource( 23 )
 text = "0"
 
 [connection signal="building_cost" from="TileMap" to="GUI/Infoboard" method="_on_TileMap_building_cost"]
+[connection signal="building_yield" from="TileMap" to="GUI/Infoboard" method="_on_TileMap_building_yield"]
 [connection signal="payable" from="GUI/Infoboard" to="TileMap" method="_on_Infoboard_payable"]
 [connection signal="block_be_choose" from="GUI/BlockboardGroup" to="TileMap" method="_on_BlockboardGroup_block_be_choose"]
