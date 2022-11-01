@@ -49,9 +49,42 @@ script/source = "extends Control
 
 signal payable(switch)
 
+# 科技 人口 金币
 var tech_integral_num = 0
 var population_num = 0
 var money_num = 100
+
+# 木头
+# 树脂 - 塑料
+var wood_num = 0
+var resin_num = 0
+var plastic_num = 0
+
+# 石头
+var stone_num = 0
+
+# 粘土 - 砖块
+var clay_num = 0
+var brick_num = 0
+
+# 金属 - 金属块
+var metal_num = 0
+var metal_block_num = 0
+
+# 沙子 - 石英沙 - 玻璃
+# 石英沙 - 硅沙 - 硅 - 硅片
+var sand_num = 0
+var quartz_sand_num = 0
+var silica_sand_num = 0
+var glass_num = 0
+var silicon_num = 0
+var silicon_pellet_num = 0
+
+# 原油 - 石油
+var crude_oil_num = 0
+var petroleum_num = 0
+
+var building_cost = 0
 
 func _ready():
 	pass
@@ -61,9 +94,13 @@ func _physics_process(delta):
 	$TechIntegral.text = str(tech_integral_num)
 	$Population.text = str(population_num)
 	$Money.text = str(money_num)
+	
+	if money_num >= building_cost:
+		emit_signal(\"payable\",true)
 
 func _on_TileMap_building_cost(cost):
-	if money_num <= cost:
+	building_cost = cost
+	if money_num < cost:
 		emit_signal(\"payable\",false)
 	else:
 		money_num -= cost
@@ -72,7 +109,7 @@ func _on_TileMap_building_yield(num):
 	if $TickTimer.is_stopped():
 		$TickTimer.start()
 		money_num += num
-		emit_signal(\"payable\",true)
+		
 		
 
 "
@@ -345,6 +382,7 @@ custom_fonts/font = ExtResource( 22 )
 text = "000000"
 
 [node name="TickTimer" type="Timer" parent="GUI/Infoboard"]
+wait_time = 3.0
 one_shot = true
 
 [node name="Blockboard" type="Control" parent="GUI"]

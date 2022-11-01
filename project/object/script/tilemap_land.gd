@@ -22,7 +22,7 @@ func _ready():
 	forest_noise.persistence = 0.8
 	
 	var tilemap_board = 128
-	var tilemap_offset = 30
+	var tilemap_offset = 60 # 256 is 40
 	
 	for x in range(tilemap_board):
 		for y in range(tilemap_board*2):
