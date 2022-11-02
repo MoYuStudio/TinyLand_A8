@@ -57,8 +57,8 @@ var money_num = 100
 # 木头
 # 树脂 - 塑料
 var wood_num = 0
-var resin_num = 0
-var plastic_num = 0
+# var resin_num = 0
+# var plastic_num = 0
 
 # 石头
 var stone_num = 0
@@ -75,14 +75,14 @@ var metal_block_num = 0
 # 石英沙 - 硅沙 - 硅 - 硅片
 var sand_num = 0
 var quartz_sand_num = 0
-var silica_sand_num = 0
+# var silica_sand_num = 0
 var glass_num = 0
-var silicon_num = 0
-var silicon_pellet_num = 0
+# var silicon_num = 0
+# var silicon_pellet_num = 0
 
 # 原油 - 石油
-var crude_oil_num = 0
-var petroleum_num = 0
+# var crude_oil_num = 0
+# var petroleum_num = 0
 
 var building_cost = 0
 
