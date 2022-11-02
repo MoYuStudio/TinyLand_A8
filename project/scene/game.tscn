@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://object/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://object/camera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/ui/game/topleft_infoboard.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/game/population.png" type="Texture" id=3]
 [ext_resource path="res://assets/block/1.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/game/infrastructure_icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/block/2.png" type="Texture" id=6]
@@ -23,6 +23,9 @@
 [ext_resource path="res://assets/ui/kenney/input_prompts/tile_0716.png" type="Texture" id=21]
 [ext_resource path="res://assets/font/kenney_pixel_64.tres" type="DynamicFont" id=22]
 [ext_resource path="res://assets/font/kenney_pixel_12.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/ui/game/money.png" type="Texture" id=24]
+[ext_resource path="res://assets/ui/game/tech_integral.png" type="Texture" id=25]
+[ext_resource path="res://assets/ui/game/wood.png" type="Texture" id=26]
 
 [sub_resource type="GDScript" id=17]
 script/source = "extends TextureButton
@@ -94,6 +97,7 @@ func _physics_process(delta):
 	$TechIntegral.text = str(tech_integral_num)
 	$Population.text = str(population_num)
 	$Money.text = str(money_num)
+	$Wood.text = str(wood_num)	
 	
 	if money_num >= building_cost:
 		emit_signal(\"payable\",true)
@@ -352,34 +356,57 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 19 )
 
-[node name="TopleftInfoboard" type="Sprite" parent="GUI/Infoboard"]
-scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
-centered = false
-
 [node name="TechIntegral" type="Label" parent="GUI/Infoboard"]
-margin_left = 70.0
-margin_top = 75.0
-margin_right = 214.0
-margin_bottom = 171.0
+margin_left = 65.0
+margin_top = 19.0
+margin_right = 209.0
+margin_bottom = 67.0
 custom_fonts/font = ExtResource( 22 )
 text = "000000"
+
+[node name="TechIntegral" type="Sprite" parent="GUI/Infoboard/TechIntegral"]
+position = Vector2( -32, 21 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 25 )
 
 [node name="Population" type="Label" parent="GUI/Infoboard"]
-margin_left = 70.0
-margin_top = 135.0
-margin_right = 214.0
-margin_bottom = 231.0
+margin_left = 272.0
+margin_top = 20.0
+margin_right = 416.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 22 )
 text = "000000"
 
+[node name="Population" type="Sprite" parent="GUI/Infoboard/Population"]
+position = Vector2( -32, 21 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
 [node name="Money" type="Label" parent="GUI/Infoboard"]
-margin_left = 70.0
-margin_top = 200.0
-margin_right = 214.0
-margin_bottom = 296.0
+margin_left = 484.0
+margin_top = 22.0
+margin_right = 628.0
+margin_bottom = 70.0
 custom_fonts/font = ExtResource( 22 )
 text = "000000"
+
+[node name="Money" type="Sprite" parent="GUI/Infoboard/Money"]
+position = Vector2( -32, 21 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 24 )
+
+[node name="Wood" type="Label" parent="GUI/Infoboard"]
+margin_left = 67.0
+margin_top = 79.0
+margin_right = 211.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 22 )
+text = "000000"
+
+[node name="Wood" type="Sprite" parent="GUI/Infoboard/Wood"]
+position = Vector2( -32, 21 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 26 )
 
 [node name="TickTimer" type="Timer" parent="GUI/Infoboard"]
 wait_time = 3.0

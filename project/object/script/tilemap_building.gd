@@ -45,9 +45,6 @@ func _process(delta):
 	var building_512 = get_used_cells_by_id(512).size()
 	building_yield_total += building_512
 	emit_signal("building_yield",building_yield_total)
-	
-	
-
 
 func _on_Land_land_buildable(switch):
 	land_buildable = switch
